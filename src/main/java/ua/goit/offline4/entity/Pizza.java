@@ -1,16 +1,7 @@
 package ua.goit.offline4.entity;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  * Pizza.
@@ -27,8 +18,8 @@ public class Pizza {
     private long id;
     private String name;
     private BigDecimal prize;
-    @OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<PizzaComponents> components;
+  //  @OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    //private List<PizzaComponents> components;
 
     public long getId() {
         return id;
@@ -54,16 +45,16 @@ public class Pizza {
         this.prize = prize;
     }
 
-    public List<PizzaComponents> getComponents() {
-        return components;
-    }
+   // public List<PizzaComponents> getComponents() {
+       // return components;
+   // }
 
-    public void setComponents(List<PizzaComponents> components) {
-        this.components = components;
-    }
+   // public void setComponents(List<PizzaComponents> components) {
+      //  this.components = components;
+   // }
 
     @Override
     public String toString() {
-        return "Pizza{" + "id=" + id + ", name='" + name + '\'' + ", prize=" + prize + ", components=" + components + '}';
+        return "Pizza{" + "id=" + id + ", name='" + name + '\'' + ", prize=" + prize + ", components=" + '}';
     }
 }

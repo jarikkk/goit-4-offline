@@ -1,21 +1,16 @@
 package ua.goit.offline4.dao.jdbc;
 
+import ua.goit.offline4.dao.PizzaDao;
+import ua.goit.offline4.entity.Component;
+import ua.goit.offline4.entity.Pizza;
+import ua.goit.offline4.entity.PizzaComponents;
+
+import javax.sql.DataSource;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import javax.sql.DataSource;
-
-import ua.goit.offline4.dao.PizzaDao;
-import ua.goit.offline4.entity.Component;
-import ua.goit.offline4.entity.PizzaComponents;
-import ua.goit.offline4.entity.Pizza;
 
 /**
  * PizzaDaoJbdc.
@@ -53,7 +48,7 @@ public class PizzaDaoJbdc
                     pizza.setId(resultSet.getLong(1));
                     pizza.setName(resultSet.getString(2));
                     pizza.setPrize(resultSet.getBigDecimal(3));
-                    pizza.setComponents(getComponents(connection, pizza.getId()));
+                   // pizza.setComponents(getComponents(connection, pizza.getId()));
                     return pizza;
                 }
 
@@ -78,7 +73,7 @@ public class PizzaDaoJbdc
                 }
 
                 for (Pizza pizza : pizzas) {
-                    pizza.setComponents(getComponents(connection, pizza.getId()));
+                  //  pizza.setComponents(getComponents(connection, pizza.getId()));
                 }
                 return pizzas;
             }
@@ -117,7 +112,7 @@ public class PizzaDaoJbdc
                     }
                     ps.executeBatch();
                 }
-                pizza.setComponents(components);
+               // pizza.setComponents(components);
                 connection.commit();
                 return pizza;
             } catch (SQLException e) {
